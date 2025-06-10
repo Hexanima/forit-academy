@@ -1,0 +1,8 @@
+{
+  "name": "academia-ulthar",
+  "packageManager": "yarn@4.9.2",
+  "workspaces": [],
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
