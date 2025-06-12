@@ -21,19 +21,6 @@ describe("StringCalculator Kata", () => {
   test("Given an extra separator, should throw", () => {
     expect(() => add("12,,2")).toThrow();
   });
-  test("Given no base when using cientific notation, should throw", () => {
-    expect(() => add("12,2x^2")).toThrow();
-  });
-  test("Given base with letters when using cientific notation, should throw", () => {
-    expect(() => add("12,2x2abc^2")).toThrow();
-  });
-  test("Given power with letters when using cientific notation, should throw", () => {
-    expect(() => add("12,2x2^2as")).toThrow();
-  });
-  test("Given a number that is in cientific notation but no power, should consider a power 1 and sum correctly", () => {
-    const result = add("5x10,5");
-    expect(result).toBe(55);
-  });
   test("Given some numbers, both positive and negative, should properly calculate the sum", () => {
     const result = add("-5,0,7");
     expect(result).toBe(2);
@@ -54,6 +41,20 @@ describe("StringCalculator Kata", () => {
     const result = add("5x10^2,5");
     expect(result).toBe(505);
   });
+  test("Given no base when using cientific notation, should throw", () => {
+    expect(() => add("12,2x^2")).toThrow();
+  });
+  test("Given base with letters when using cientific notation, should throw", () => {
+    expect(() => add("12,2x2abc^2")).toThrow();
+  });
+  test("Given power with letters when using cientific notation, should throw", () => {
+    expect(() => add("12,2x2^2as")).toThrow();
+  });
+  test("Given a number that is in cientific notation but no power, should consider a power 1 and sum correctly", () => {
+    const result = add("5x10,5");
+    expect(result).toBe(55);
+  });
+  
   test("Given a value with E notation, should sum them correctly", () => {
     const result = add("4E2,4");
     expect(result).toBe(404);
