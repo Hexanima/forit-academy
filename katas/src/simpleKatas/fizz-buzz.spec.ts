@@ -1,6 +1,6 @@
 import { describe, test } from "vitest";
 
-describe("FizzBuzz Function", () => {
+describe("FizzBuzz Kata", () => {
     test("Given a number that is divisible by 3, should return 'Fizz'")
     test("Given a number that is divisible by 5, should return 'Buzz'")
     test("Given a number that is divisible by both 3 and 5, should return 'FizzBuzz'")
