@@ -9,22 +9,34 @@ export function add(payload: string): number {
       if (trimmedVal.includes("x")) {
         const [numStr, exponential] = trimmedVal.split("x");
 
-        let [base, power] = exponential.split("^").map((val) => Number(val));
-        if (Number.isNaN(base)) throw new Error("Base has a letter");
-        if (Number.isNaN(power)) throw new Error("Power has a letter");
-        if (!base) throw new Error("Wrong exponential detected");
-        if (!power) power = 1;
+        let [base, power] = exponential.split("^");
+        if (base === "") throw new Error("Wrong base detected" + exponential);
+        if (power === "")
+          throw new Error("Wrong power detected: " + exponential);
+        if (power === undefined) power = "1";
+
+        const baseNum = Number(base);
+        const powerNum = Number(power);
+
+        if (Number.isNaN(baseNum))
+          throw new Error("Base has a letter: " + base);
+        if (Number.isNaN(powerNum))
+          throw new Error("Power has a letter: " + power);
         let number = Number(numStr);
-        for (let i = 1; i <= power; i++) {
-          number *= base;
+        for (let i = 1; i <= powerNum; i++) {
+          number *= baseNum;
         }
         return number;
       }
-      return Number(trimmedVal);
+      const res = Number(trimmedVal);
+      if (Number.isNaN(res))
+        throw new Error(
+          "Error parsing the numbers, make sure there is no letters: " +
+            trimmedVal
+        );
+      return res;
     })
     .reduce<number>((prev, val) => prev + val, 0);
 
-  if (Number.isNaN(result))
-    throw new Error("Error parsing the numbers, make sure there is no letters");
   return result;
 }

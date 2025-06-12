@@ -3,7 +3,7 @@ import { add } from "./string-calculator";
 
 describe("StringCalculator Kata", () => {
   test("USAGE PAYLOAD, to use and see the result (Intended to experiment and test with the function)", () => {
-    const INPUT: string = "0 + -12x9^1"; // Modifica esto para experimentar con la funcion y ver las posibilidades (está pa jugar con esto jaja, sino seria hacer un frontend)
+    const INPUT: string = "2 + 2x2^2"; // Modifica esto para experimentar con la funcion y ver las posibilidades (está pa jugar con esto jaja, sino seria hacer un frontend)
 
     const result = add(INPUT);
     expect(result).toBeTypeOf("number");
@@ -41,6 +41,10 @@ describe("StringCalculator Kata", () => {
     const result = add("5x10^2,5");
     expect(result).toBe(505);
   });
+  test("Given a power 0 in cientific notation, should sum it correctly", () => {
+    const result = add("5x10^0,5");
+    expect(result).toBe(10);
+  });
   test("Given no base when using cientific notation, should throw", () => {
     expect(() => add("12,2x^2")).toThrow();
   });
@@ -54,7 +58,10 @@ describe("StringCalculator Kata", () => {
     const result = add("5x10,5");
     expect(result).toBe(55);
   });
-  
+  test("Given no power number in cientific notation BUT a ^, should throw", () => {
+    expect(()=>add("5x10^,5")).toThrow();
+  });
+
   test("Given a value with E notation, should sum them correctly", () => {
     const result = add("4E2,4");
     expect(result).toBe(404);
