@@ -5,7 +5,10 @@ export function add(payload: string): number {
     .split(new RegExp("[/,+]"))
     .map<number>((value) => {
       const trimmedVal = value.trim();
-      if (trimmedVal.length === 0) throw new Error("Extra separator detected");
+      if (trimmedVal.length === 0)
+        throw new Error(
+          "Extra separator detected, please check: " + curatedString
+        );
       if (trimmedVal.includes("x")) {
         const [numStr, exponential] = trimmedVal.split("x");
 
