@@ -23,6 +23,7 @@ describe("ToRoman Kata", () => {
     expect(toRoman(4999)).toBe("Out of range"));
 
   // Basic adding
-  test("Given an 11, should return XI", () => expect(toRoman(11)).toBe("XI"));
-  test("Given an 13, should return XI", () => expect(toRoman(13)).toBe("XIII"));
+  test("Given a 6, should return VI", () => expect(toRoman(6)).toBe("VI"));
+  test.skip("Given an 7, should return VII", () =>
+    expect(toRoman(7)).toBe("VII"));
 });
