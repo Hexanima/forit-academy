@@ -18,12 +18,26 @@ describe("ToRoman Kata", () => {
   test("Given a 1000, should return its roman counterpart M", () =>
     expect(toRoman(1000)).toBe("M"));
 
-  // Max range (No me se mas numeros en romano, solo hasta la M)
+  // Limits
   test("Given a number greater than 4998, should return 'Out of range'", () =>
     expect(toRoman(4999)).toBe("Out of range"));
+  test("Given a 0, should return 'No zero'", () =>
+    expect(toRoman(0)).toBe("No zero"));
+  test("Given smaller than 0, should return 'No negatives'", () =>
+    expect(toRoman(-1)).toBe("No negatives"));
 
   // Basic adding
   test("Given a 6, should return VI", () => expect(toRoman(6)).toBe("VI"));
-  test.skip("Given an 7, should return VII", () =>
-    expect(toRoman(7)).toBe("VII"));
+  test("Given a 7, should return VII");
+  test("Given an 11, should return XI");
+  test("Given an 13, should return XIII");
+  test("Given an 15, should return XV");
+  test("Given an 17, should return XVII");
+  test("Given an 21, should return XXI");
+
+  // Basic substraction
+  test("Given a 4, should return IV");
+  test("Given a 9, should return IX");
+  test("Given a 14, should return XIV");
+  test("Given a 19, should return XIX");
 });
